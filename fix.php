@@ -3,23 +3,23 @@
 require_once('/etc/phpmyadmin/config-db.php');
 
 system("mysql -u root << EOF
-use mysql:
+use mysql;
 drop user '".$dbuser."'@'localhost';
 EOF");
 
 system('mysql -u root << EOF
-use mysql:
+use mysql;
 drop database '.$dbname.';
 EOF');
 
 system("mysql -u root << EOF
-use mysql:
+use mysql;
 CREATE USER '".$dbuser."'@'localhost' IDENTIFIED BY '".$dbpass."';
 CREATE DATABASE ".$dbname.";
 EOF");
 
 system("mysql -u root << EOF
-use mysql:
+use mysql;
 GRANT USAGE ON ".$dbname.".* TO '".$dbuser."'@'localhost' IDENTIFIED BY '".$dbpass."';
 GRANT ALL PRIVILEGES ON ".$dbname.".* TO '".$dbuser."'@'localhost'; 
 FLUSH PRIVILEGES;
